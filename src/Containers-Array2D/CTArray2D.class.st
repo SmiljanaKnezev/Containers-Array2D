@@ -68,6 +68,7 @@ CTArray2D class >> width: width height: height type: collectionClass [
 { #category : #converting }
 CTArray2D >> asArray [
 	"return a copy of the receiver"
+	
 	^ contents copy
 ]
 
@@ -209,6 +210,8 @@ CTArray2D >> postCopy [
 
 { #category : #enumeration }
 CTArray2D >> rowAndColumnValuesDo: aBlock [
+	"Execute aBlock on every row and column values"
+	
 	1 to: self width do: [:col |
 		1 to: self height do: [:row |
 			aBlock value: row value: col value: (self atColumn: col atRow: row)]]
@@ -216,6 +219,8 @@ CTArray2D >> rowAndColumnValuesDo: aBlock [
 
 { #category : #enumeration }
 CTArray2D >> rowsAndColumnsDo: aBlock [
+	"Execute a block on every row and column"
+	
 	1 to: self width do: [:col |
 		1 to: self height do: [:row |
 			aBlock value: row value: col]]
@@ -224,6 +229,7 @@ CTArray2D >> rowsAndColumnsDo: aBlock [
 { #category : #private }
 CTArray2D >> setContents: aCollection [
 	"set the content of the array with aCollection"
+	
 	contents := aCollection
 ]
 

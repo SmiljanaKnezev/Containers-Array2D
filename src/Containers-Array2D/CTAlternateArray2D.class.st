@@ -32,11 +32,14 @@ CTAlternateArray2D class >> width2Height3 [
 { #category : #iterate }
 CTAlternateArray2D >> allPositionsDo: aBlock [
 	"Execute a Block on all the positions (points) of the receiver."
+	
 	self firstPosition pointTo: self dimension do: aBlock
 ]
 
 { #category : #iterate }
 CTAlternateArray2D >> allPositionsWithin: someDistance from: someOrigin [
+	"Answer first position starting from some origin to some distance"
+	
 	| answer topLeft bottomRight |
 	answer := OrderedCollection new.
 	topLeft := someOrigin - someDistance max: self firstPosition.
@@ -47,6 +50,8 @@ CTAlternateArray2D >> allPositionsWithin: someDistance from: someOrigin [
 
 { #category : #accessing }
 CTAlternateArray2D >> at: aPoint [
+	"Answer the element at Point x, Point y"
+	
 	| row |
 	row := self atRow: aPoint y.
 	^ row at: aPoint x
@@ -54,6 +59,8 @@ CTAlternateArray2D >> at: aPoint [
 
 { #category : #accessing }
 CTAlternateArray2D >> at: aPoint put: anObject [
+	"Store an object at Point x, Point y"
+	
 	| row |
 	row := self atRow: aPoint y.
 	row atWrap: aPoint x put: anObject
@@ -61,6 +68,8 @@ CTAlternateArray2D >> at: aPoint put: anObject [
 
 { #category : #accessing }
 CTAlternateArray2D >> atRow: anInteger [
+	"Answer row at specified position"
+	
 	^ self rows at: anInteger 
 ]
 
@@ -77,6 +86,8 @@ CTAlternateArray2D >> dimension: aPoint [
 
 { #category : #iterate }
 CTAlternateArray2D >> do: aBlock [
+	"Execute a block on each row"
+	
 	self rowsDo: [ :eachRow | eachRow do: aBlock ]
 ]
 
@@ -132,6 +143,8 @@ CTAlternateArray2D >> rows: someRows [
 
 { #category : #iterate }
 CTAlternateArray2D >> rowsDo: aBlock [
+	"Execute a block on rows"
+	
 	self rows do: aBlock 
 ]
 
